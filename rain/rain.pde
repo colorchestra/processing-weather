@@ -1,9 +1,31 @@
+ArrayList<Raindrop> raindrops = new ArrayList();  
+
 void setup() {
   size(1024, 768);
   background(0);
-  
-
 }
+
+void draw() {
+  background(0);
+  for (Raindrop drop : raindrops) {
+    drop.display();
+    drop.pour();
+  }
+  makeOneRaindrop(); 
+}
+
+void makeOneRaindrop() {
+
+  float randSize = random(10, 20);
+  float randXpos = random(0, 1024);
+  float randYspeed = random(3, 10);
+
+  Raindrop drop1 = new Raindrop(randSize, randXpos, 0, randYspeed);
+  
+  raindrops.add( drop1 );
+  
+}
+// ========================================================================
 
 class Raindrop {
   float size;   // size/length of raindrop (randomized for each drop)
@@ -37,21 +59,7 @@ void pour() {
 
 }
 
-  // The following 5 lines should be exectued every iteration to make many raindrops, but if I put this block into draw() it doesn't seem to work
+// class ==================================================================
 
-  float randSize = random(10, 20);
-  float randXpos = random(0, 1024);
-  float randYspeed = random(3, 10);
-
-  Raindrop drop1 = new Raindrop(randSize,randXpos,0,randYspeed);
   
   
-
-void draw() {
-  
-  drop1.display();
-  drop1.pour();
-  
-    
-  
-}
