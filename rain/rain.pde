@@ -6,10 +6,10 @@ void setup() {
 }
 
 class Raindrop {
-  float size;
-  float xpos;
-  float ypos;
-  float yspeed;
+  float size;   // size/length of raindrop (randomized for each drop)
+  float xpos;   // X position of raindrop (randomized for each drop)
+  float ypos;   // Y position of raindrop (starts at 0, increases)
+  float yspeed; // Y speed of raindrop (randomized for each drop)
 
 
 Raindrop(float tempSize, float tempXpos, float tempYpos, float tempYspeed) {
@@ -21,9 +21,12 @@ Raindrop(float tempSize, float tempXpos, float tempYpos, float tempYspeed) {
 }
   
 void display() {
-    stroke(200);
-    line(xpos, ypos, xpos, size);
-    //rect(xpos,ypos,1,size);
+    stroke(255); // Draw raindrop
+    line(xpos, ypos, xpos, (ypos + size));
+    
+    stroke(0); // Draw black line after Raindrop
+    line(xpos, (ypos - size), xpos, ypos);
+
     
   }
   
@@ -34,18 +37,21 @@ void pour() {
 
 }
 
+  // The following 5 lines should be exectued every iteration to make many raindrops, but if I put this block into draw() it doesn't seem to work
 
-void draw() {
-  
   float randSize = random(10, 20);
   float randXpos = random(0, 1024);
   float randYspeed = random(3, 10);
 
-  // background(0);
   Raindrop drop1 = new Raindrop(randSize,randXpos,0,randYspeed);
-  drop1.pour();
-  drop1.display();
-
   
+  
+
+void draw() {
+  
+  drop1.display();
+  drop1.pour();
+  
+    
   
 }
