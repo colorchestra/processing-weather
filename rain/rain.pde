@@ -12,19 +12,22 @@ void draw() {
     drop.pour();
   }
   makeOneRaindrop(); 
+ // removeRaindrop();
 }
 
 void makeOneRaindrop() {
 
   float randSize = random(10, 20);
   float randXpos = random(0, 1024);
-  float randYspeed = random(3, 10);
+  float randYspeed = random(8, 15);
+  boolean isAlive;
 
   Raindrop drop1 = new Raindrop(randSize, randXpos, 0, randYspeed);
   
   raindrops.add( drop1 );
   
 }
+
 // ========================================================================
 
 class Raindrop {
@@ -32,6 +35,7 @@ class Raindrop {
   float xpos;   // X position of raindrop (randomized for each drop)
   float ypos;   // Y position of raindrop (starts at 0, increases)
   float yspeed; // Y speed of raindrop (randomized for each drop)
+  boolean isAlive; 
 
 
 Raindrop(float tempSize, float tempXpos, float tempYpos, float tempYspeed) {
@@ -55,6 +59,13 @@ void display() {
 void pour() {
   ypos = ypos + yspeed;
   
+}
+
+void removeRaindrop() {
+  //if (ypos + 100) >= height {
+  //  for(int i= raindrops.size()-1; i > 0; i--) 
+  //    if(isAlive!=true) remove(i);  
+ // }
 }
 
 }
