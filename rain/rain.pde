@@ -1,5 +1,5 @@
 ArrayList<Raindrop> raindrops = new ArrayList<Raindrop>();  
-int rainIntensity = 5;
+int rainIntensity = 4;
 
 void setup() {
   size(1024, 768);
@@ -13,13 +13,13 @@ void draw() {
     drop.display();
     drop.pour();
   }
-  for (int i = raindrops.size() - 1; i >= 0; i--) {
+  for (int i = raindrops.size() - 1; i >= 0; i--) {     // Iterate through the list backwards to remove drops out of bounds
     Raindrop j = raindrops.get(i);
     boolean checkAlive = j.checkAlive();
     if(checkAlive!=true) raindrops.remove(j);
   }
 
-  for (int i = 0; i < rainIntensity; i++) {
+  for (int i = 0; i < rainIntensity; i++) {             // The rainItensity var defines how many drops are created each iteration
   makeOneRaindrop();  
   }
   
@@ -56,30 +56,21 @@ Raindrop(float tempSize, float tempXpos, float tempYpos, float tempYspeed) {
 
 }
   
-void display() {
-    stroke(255); // Draw raindrop
+void display() {                                // Draw raindrop in white
+    stroke(255); 
     line(xpos, ypos, xpos, (ypos + size));
-    
-  //  stroke(0); // Draw black line after Raindrop
-  //  line(xpos, (ypos - size), xpos, ypos);
-
     
   }
   
 void pour() {
   ypos = ypos + yspeed;
   isAlive = true;
-  if (ypos > 768 + 100) isAlive = false;
+  if (ypos > height + 100) isAlive = false;    // Move raindrop according to its speed
 
  
   }
   
-void delete() {
-  for(int i= raindrops.size() - 1; i > 0; i--) 
-    raindrops.remove(i);
-  }
-  
-public boolean checkAlive() {
+boolean checkAlive() {
   if (isAlive) {
     return true;  
    }
