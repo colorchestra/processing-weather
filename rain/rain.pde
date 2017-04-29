@@ -1,5 +1,6 @@
 ArrayList<Raindrop> raindrops = new ArrayList<Raindrop>();  
-int rainIntensity = 4;
+int rainIntensity = 4;                                 // Defines how many drops are created each iteration; values between 1 and 10 work well
+int windIntensity = 1;                                 // Defines how far drops are moved vertically; values between -5 and 5 work well
 
 void setup() {
   size(1024, 768);
@@ -63,9 +64,10 @@ void display() {                                // Draw raindrop in white
   }
   
 void pour() {
-  ypos = ypos + yspeed;
-  isAlive = true;
-  if (ypos > height + 100) isAlive = false;    // Move raindrop according to its speed
+  ypos = ypos + yspeed;                        // Move raindrop downwards according to its speed
+  xpos = xpos + windIntensity;                 // Move raindrop horizontally according to windIntensity
+  if (ypos > height + 100) isAlive = false;    
+  else isAlive = true;
 
  
   }
