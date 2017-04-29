@@ -1,10 +1,11 @@
 ArrayList<Raindrop> raindrops = new ArrayList<Raindrop>();  
 int rainIntensity = 4;                                 // Defines how many drops are created each iteration; values between 1 and 10 work well
-int windIntensity = 1;                                 // Defines how far drops are moved vertically; values between -5 and 5 work well
+int windIntensity = 2;                                 // Defines how far drops are moved vertically; values between -5 and 5 work well
 
 void setup() {
   size(1024, 768);
   background(0);
+//  hint(ENABLE_STROKE_PURE);
 }
 
 
